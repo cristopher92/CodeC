@@ -1,0 +1,8 @@
+Without                             seeing                            your                            entire                            structure                            application,                            it's                            hard
+tosaywhat'swrong.Inorderforsomeonetohelpdebugthis
+sortofthingthroughtheforum,you'llneedtoprovide
+detailsonaspecificproblem.TheCSSstylingsupportis
+somewhatlimitedinFM.It'sgenerallybesttojustrelyon
+theEDD/templatedefinedstyling,whichgivesyouthemost
+completeformattingsupport.CSSisreallyjustusefulfor
+very simple XML models that have very simple styling.

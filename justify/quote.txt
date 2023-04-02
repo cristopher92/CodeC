@@ -1,0 +1,6 @@
+Without seeing your entire
+        structure application, it's hard to say what's wrong. In order for someone to
+            help debug this sort of thing through the forum, you'll
+                need to provide details on a specific problem.
+
+The CSS styling support is somewhat limited in FM. It's generally best to just rely on the EDD/template defined styling, which gives you the most complete formatting support. CSS is really just useful for very simple XML models that have very simple styling.

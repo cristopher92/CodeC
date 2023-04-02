@@ -1,0 +1,16 @@
+CFLAGS = -std=c89
+
+app: applicazioni.o operazioni.o
+	gcc -o app *.o
+
+applicazioni.o: applicazioni.c
+	gcc -c applicazioni.c
+
+operazioni.o: operazioni.c operazioni.h
+	gcc -c operazioni.c
+
+clean:
+	rm -f *.o
+
+run:
+	./app
