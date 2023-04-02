@@ -1,0 +1,11 @@
+sommaprodotto: applicazione.o somma.o prodotto.o
+	gcc -o sommaprodotto *.o
+
+clean:
+	rm -f *.o
+	rm sommaprodotto
+
+run:
+	./sommaprodotto 23 89
+	
+
