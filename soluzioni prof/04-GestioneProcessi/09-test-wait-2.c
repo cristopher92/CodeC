@@ -69,8 +69,8 @@ int main (void) {
 	//sleep(90);
 	/* Now let's wait that all kids do the stuff */
 	while ((child_pid = wait(&status)) != -1) {
-		printf("PARENT: PID=%d. Got info of child with PID=%d, status=0x%04X\n", getpid(), child_pid, status);
-		//printf("PARENT: PID=%d. Got info of child with PID=%d, status=%d\n", getpid(), child_pid, WEXITSTATUS(status));
+		//printf("PARENT: PID=%d. Got info of child with PID=%d, status=0x%04X\n", getpid(), child_pid, status);
+		printf("PARENT: PID=%d. Got info of child with PID=%d, status=%d\n", getpid(), child_pid, WEXITSTATUS(status));
 	}
 	if (errno == ECHILD) {
 		printf("In PID=%6d, no more child processes\n", getpid());
