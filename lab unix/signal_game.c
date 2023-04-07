@@ -20,85 +20,65 @@ alarm e gestendo il segnale SIGALRM), il programma stampa a video
 #include "unistd.h"
 
 
-int time;
-pid_t my_pid, value;
+
 
 void my_handler(int sig){
-    printf("Non hai fatto in tempo ad indovinare!\n");
+    printf("Non hai fatto in tempo, sarai più fortunato la prossima volta.\n");
     exit(EXIT_FAILURE);
 }
-int conversion(char c[]){
-    int conversion(char c[]) {
-        int retvalue;
-        if (c != NULL) {
-            retvalue = atoi(c);
-        } else {
-            char input[100], *endptr;
-            fgets(input, sizeof(input), stdin);
-            retvalue = strtol(input, &endptr, 10);
-            if (input[0] == '\n' || *endptr != '\n' && *endptr != '\0') {
-                printf("Input non valido\n");
-                return -1;
-            }
-        }
-        return retvalue;
+
+int main(int argc, char *argv[]){
+    if (argc != 3){
+        fprintf(stderr, "Error: \nInserisci come primo parametro il limite e come secondo il tempo\n");
+        exit(EXIT_FAILURE);
     }
-
-}
-int main(int argc, char * argv[]) {
-       if(argc != 3){
-           fprintf(stderr, "inserisci il limite e il tempo per il gioco, error: %s\n",
-                   strerror(errno));
-           exit(EXIT_FAILURE);
-       }
-       int win_number, user_try, flag = 0, limit, status;
-    limit = conversion(argv[1]);
-    time = conversion(argv[2]);
-
-    if (limit == -1 || time == -1){
-        printf("inseriti valori non idonei\n");
+    int limit, time;
+    char *endptr;
+    limit = strtol(argv[1], &endptr, 10);
+    if (*endptr != '\0' || limit <= 0) {
+        fprintf(stderr, "Error: Invalid limit '%s'\n", argv[1]);
         exit(EXIT_FAILURE);
     }
 
-
-
-
-       struct sigaction sa;
-       bzero(&sa, sizeof (sa));
-       sa.sa_handler = my_handler;
-       sigaction(SIGALRM, &sa, NULL);
-
-    switch (value = fork()) {
-        case -1:
-            fprintf(stderr, "error in %s", strerror(errno));
-            exit(EXIT_FAILURE);
-        case 0:
-            my_pid = getpid();
-            printf("%d", my_pid);
-            while (1) {
-                printf("mancano %d secondi\n",alarm(time-=1));
-                sleep(1);
-            }
-            break;
-        default:
-            srand(my_pid);
-            win_number = rand() % (limit + 1);
-            alarm(time);
-            while (1) {
-                do {
-                    printf("Inserisci un intero compreso tra 0 e %d\n", limit);
-                } while ((user_try = conversion(NULL)) == -1);
-
-                if (user_try < win_number) {
-                    printf("il tuo numero è minore\n");
-                } else if (user_try > win_number) {
-                    printf("il tuo numero è maggiore\n");
-                } else {
-                    printf("Complimenti hai vinto!\n");
-                    exit(EXIT_SUCCESS);
-                }
-            }
-            break;
+    time = strtol(argv[2], &endptr, 10);
+    if (*endptr != '\0' || time <= 0) {
+        fprintf(stderr, "Error: Invalid time '%s'\n", argv[2]);
+        exit(EXIT_FAILURE);
     }
+
+    /*gestione del segnale*/
+    struct sigaction sa;
+    bzero(&sa, sizeof (sa));
+    sa.sa_handler = my_handler;
+    sigaction(SIGALRM, &sa, NULL);
+
+    srand(getpid());
+    int win_number, user_input;
+    win_number = rand() % limit +1;
+
+    printf("Pronti, partenzaaaaa....VIA!\n");
+    alarm(time);
+
+    do {
+        printf("Inserisci un numero compreso tra 0 e %d\n", limit);
+        char input[256];
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%d", &user_input) != 1) {
+            printf("Input non valido, inserisci un numero intero\n");
+            continue;
+        }
+        if (user_input < win_number){
+            printf("Il tuo numero è minore\n");
+        }
+        else if(user_input > win_number){
+            printf("Il tuo numero è maggiore\n");
+        } else{
+            printf("Complimenti! Hai vinto. \n");
+            exit(EXIT_SUCCESS);
+        }
+    } while (1);
+
+
+
 
 }
