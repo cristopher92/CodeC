@@ -73,7 +73,7 @@ int main (void) {
     buf = malloc(READ_BUF_SIZE);
     TEST_ERROR;
 
-    while (num_bytes = read(my_pipe[0], buf, READ_BUF_SIZE)) {
+    while ((num_bytes = read(my_pipe[0], buf, READ_BUF_SIZE))) {
       //      write(STDOUT_FILENO, "X", 1);
       write(STDOUT_FILENO, buf, num_bytes);
       //sleep(1);

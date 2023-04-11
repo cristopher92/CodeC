@@ -31,9 +31,10 @@ int main() {
       case 0:
         close(file_pipes[1]);
         //close(file_pipes[0]);
-        sleep(10);
+        //sleep(10);
         data_processed = read(file_pipes[0], buffer, BUFSIZ);
-        printf("Read %d bytes: %s\n", data_processed, buffer);
+        printf("sono il figlio: %d, Read %d bytes: %s\n",getpid(), data_processed, buffer);
+        close(file_pipes[0]);
         exit(EXIT_SUCCESS);
       default:
 
@@ -47,7 +48,7 @@ int main() {
         sleep(2);
 
         data_processed = write(file_pipes[1], some_data, strlen(some_data));
-        printf("Wrote %d bytes\n", data_processed);
+        printf("sono il padre, Wrote %d bytes\n", data_processed);
         exit(EXIT_SUCCESS);
     }
   }
