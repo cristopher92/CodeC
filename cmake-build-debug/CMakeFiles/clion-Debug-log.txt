@@ -1,1 +1,1 @@
-CMakeLists.txt not found in /home/cristopher/Documenti/CodeC Select CMakeLists.txt
+CMakeLists.txt not found in /home/cris/Documents/SO/CodeC Select CMakeLists.txt
