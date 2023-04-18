@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "time.h"
 #include "stdio.h"
-/*prova push*/
+/*prova pushs*/
 typedef struct Stuff{
     int type;
     int creation_time;
