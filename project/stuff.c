@@ -1,6 +1,7 @@
 #include "stuff.h"
 #include <stdlib.h>
 #include "time.h"
+#include "stdio.h"
 
 typedef struct Stuff{
     int type;
@@ -19,8 +20,28 @@ Stuff *init_stuff(int current_time){
     stuff->type = rand() % (NUM_STUFF + 1);
     stuff->qty = rand() % (MAX_QTY + 1);
     stuff->creation_time = current_time;
-    switch (expression) {
-
+    switch (stuff->type) {
+        case BANANE:
+            stuff->expiration_time = 8;
+            break;
+        case MANGO:
+            stuff->expiration_time = 8;
+            break;
+        case VITELLO:
+            stuff->expiration_time = 5;
+            break;
+        case MAIALE:
+            stuff->expiration_time = 6;
+            break;
+        case TONNO:
+            stuff->expiration_time = 10;
+            break;
+        case MERLUZZO:
+            stuff->expiration_time = 10;
+            break;
+        default:
+            printf("Error in init_stuff");
+            break;
     }
     return stuff;
 }

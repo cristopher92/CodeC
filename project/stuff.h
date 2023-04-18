@@ -32,6 +32,11 @@ typedef struct Stuff{
 /*
  * Function that returns the day left before the stuff expires
  * */
-int time_left(Stuff stuff, int i);
+int time_left(Stuff stuff, int current_time);
+
+/*
+ * Function to randm initialize a stuff
+ * */
+Stuff *init_stuff(int current_time);
 
 #endif
