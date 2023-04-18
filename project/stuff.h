@@ -11,6 +11,9 @@
 #define TONNO 5
 #define MERLUZZO 6
 
+#define NUM_STUFF 10
+#define MAX_QTY 5
+
 /*
  * Structure for rappresenting stuff
  * Parameters:
