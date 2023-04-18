@@ -39,4 +39,10 @@ int time_left(Stuff stuff, int current_time);
  * */
 Stuff *init_stuff(int current_time);
 
+/*
+ * Function to remove stuff, if expiration time is over or if the ship finish the job
+ * return 0 to success, -1 for errors
+ * */
+int remove_stuff(Stuff *stuff);
+
 #endif

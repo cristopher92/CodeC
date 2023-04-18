@@ -45,3 +45,7 @@ Stuff *init_stuff(int current_time){
     }
     return stuff;
 }
+
+int remove_stuff(Stuff *stuff){
+
+}
