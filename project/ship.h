@@ -3,6 +3,10 @@
 #include "stuff.h"
 #include "position.h"
 
+#define NO_STUFF NULL
+#define CAPACITY 20
+#define SO_SPEED 30
+
 /*
  * Structure rapresenting a ship
  * Parameters:
@@ -21,14 +25,27 @@ typedef struct Ship{
 }Ship;
 
 /*
- * Function to move the ship from start to destination
+ * Function to init a ship
  * */
-void trip_ship(Position destination, Position start);
+Ship* init_ship(int id, int capacity, int max_side);
+
+
+/*
+ * Function to remove a ship
+ * */
+void remove_ship(Ship *ship);
+
 
 /*
  * Function to calculate the time to move the ship from start to destination
  * */
 int time_for_trip(Position destination, Position start);
+
+/*
+ * Function to move the ship from start to destination
+ * */
+void trip_ship(Position destination, Position start);
+
 
 /*
  * Function to load the stuff on board, return 0 to success, -1 for errors

@@ -12,13 +12,13 @@
 #define MERLUZZO 6
 
 #define NUM_STUFF 10
-#define MAX_QTY 5
+#define SO_SIZE 5
 
 /*
  * Structure for rappresenting stuff
  * Parameters:
  * type:                type of stuff, es BANANE etc
- * creation_time:
+ * creation_time:       time (of the simulation) that is created
  * expiration_time:     time before the stuff expire
  * qty:                 quantities of this type
  * */
@@ -43,6 +43,6 @@ Stuff *init_stuff(int current_time);
  * Function to remove stuff, if expiration time is over or if the ship finish the job
  * return 0 to success, -1 for errors
  * */
-int remove_stuff(Stuff *stuff);
+void remove_stuff(Stuff *stuff);
 
 #endif

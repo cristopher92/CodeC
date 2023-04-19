@@ -1,11 +1,18 @@
 #include "position.h"
-#include <stdlib.h>
-#include <time.h>
 
-void random_point(Position *position, int max) {
 
+Position *init_position ( int max_side) {
+    Position *new_position = malloc(sizeof(struct Position));
+    if(new_position == NULL){
+        fprintf(stderr,"Error allocating memory for position");
+        return NULL;
+    }
     srand(time(NULL));
-    position->x = (double)(rand() % max);
-    position->y = (double)(rand() % max);
+    new_position->x = (double)(rand() % max_side);
+    new_position->y = (double)(rand() % max_side);
+    return new_position;
+}
 
+void remove_position(Position *position){
+    free(position);
 }
